@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingWhileLoop", "UsingWhileLoop\UsingWhileLoop.csproj", "{945C67BD-D5DF-47E3-9124-F70D78CF24C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForLoop", "ForLoop\ForLoop.csproj", "{E8CECE31-C2A9-424C-9A92-5305BC753D60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindingWordWithWhileLoop", "FindingWordWithWhileLoop\FindingWordWithWhileLoop.csproj", "{964C859B-E3F7-4B03-962A-CCCF5A7546DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhileWithMethodsExercise", "WhileWithMethodsExercise\WhileWithMethodsExercise.csproj", "{F1C1FAB8-CE96-4D76-842B-69039EE47521}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindingWordsWithForExercise", "FindingWordsWithForExercise\FindingWordsWithForExercise.csproj", "{ABFEADC0-941D-4B20-AE18-5465C1071AD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{945C67BD-D5DF-47E3-9124-F70D78CF24C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{945C67BD-D5DF-47E3-9124-F70D78CF24C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{945C67BD-D5DF-47E3-9124-F70D78CF24C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{945C67BD-D5DF-47E3-9124-F70D78CF24C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8CECE31-C2A9-424C-9A92-5305BC753D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CECE31-C2A9-424C-9A92-5305BC753D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8CECE31-C2A9-424C-9A92-5305BC753D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8CECE31-C2A9-424C-9A92-5305BC753D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{964C859B-E3F7-4B03-962A-CCCF5A7546DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{964C859B-E3F7-4B03-962A-CCCF5A7546DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{964C859B-E3F7-4B03-962A-CCCF5A7546DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{964C859B-E3F7-4B03-962A-CCCF5A7546DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C1FAB8-CE96-4D76-842B-69039EE47521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C1FAB8-CE96-4D76-842B-69039EE47521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C1FAB8-CE96-4D76-842B-69039EE47521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C1FAB8-CE96-4D76-842B-69039EE47521}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABFEADC0-941D-4B20-AE18-5465C1071AD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABFEADC0-941D-4B20-AE18-5465C1071AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABFEADC0-941D-4B20-AE18-5465C1071AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABFEADC0-941D-4B20-AE18-5465C1071AD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FD79E73-0931-4B83-933A-3978BBC3053E}
+	EndGlobalSection
+EndGlobal
