@@ -10,16 +10,25 @@ namespace Ex02_Name
     {
         static void Main(string[] args)
         {
+
             WelcomeText();
+            string name = AskName();
+            WelcomeWithName(name);
+            Console.ReadKey();
 
 
         }
 
-
-
-        public static string WelcomeWithName()
+        private static string AskName()
         {
-            string text = $"\n-----Welcome {name}!-----\n\n :) \n";
+            Console.WriteLine("\n\nWhat is your full name?\n");
+            return Console.ReadLine();
+        }
+
+
+        public static string WelcomeWithName(string name)
+        {
+            string text = $"\n\n-----Welcome {name}!-----\n\n :) \n";
             Console.WriteLine(text);
             return text;
         }
@@ -27,7 +36,7 @@ namespace Ex02_Name
 
         public static string WelcomeText()
         {
-            string text = "\n-----Welcome!-----\n\n :) \n";
+            string text = "\n-----Welcome!-----\n\n";
             Console.WriteLine(text);
             return text;
         }
