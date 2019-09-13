@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhileCicle", "WhileCicle\WhileCicle.csproj", "{B43E89DD-5C0F-44DC-86D1-42399EB41B54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowTime", "ShowTime\ShowTime.csproj", "{EDEAB90B-3E63-4070-B25C-EF53A300ED3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B43E89DD-5C0F-44DC-86D1-42399EB41B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B43E89DD-5C0F-44DC-86D1-42399EB41B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B43E89DD-5C0F-44DC-86D1-42399EB41B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B43E89DD-5C0F-44DC-86D1-42399EB41B54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDEAB90B-3E63-4070-B25C-EF53A300ED3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDEAB90B-3E63-4070-B25C-EF53A300ED3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDEAB90B-3E63-4070-B25C-EF53A300ED3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDEAB90B-3E63-4070-B25C-EF53A300ED3E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37752DAA-EEEC-4554-B16F-E401905CB0F6}
+	EndGlobalSection
+EndGlobal
