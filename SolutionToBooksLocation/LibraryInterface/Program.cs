@@ -104,7 +104,12 @@ namespace LibraryInterface
                     Console.Clear();
                     Console.WriteLine("\nLog off...");
                     Thread.Sleep(1700);
-                    InitializingSys();
+                    Console.Clear();
+                    while (!DoTheSystemLogin())
+                    {
+                        Console.WriteLine("Invalid credentials");
+                    }
+                    //InitializingSys();
                     break;
             }
         }
