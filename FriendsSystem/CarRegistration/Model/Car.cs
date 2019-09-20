@@ -12,7 +12,9 @@ namespace CarRegistration.Model
         public string Model { get; set; }
         public int Year { get; set; }
         public double Value { get; set; }
-        public string CarLicensePlate { get; set; }
+        public string CarLicensePlate { get;
+
+            set; }
 
         override
        public string ToString()

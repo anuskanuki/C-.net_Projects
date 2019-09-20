@@ -35,24 +35,16 @@ namespace CarRegistration
             Console.Write("Value: ");
             double value = double.Parse(Console.ReadLine());
 
-            Console.Write("Car License Plate: ");
-            string carLicensePlate = Console.ReadLine();
-
-            if (VerifyCarPlate(carLicensePlate))
-            {
                 carsList.Add(new Car
                 {
                     Brand = brand,
                     Model = model,
                     Year = year,
                     Value = value,
-                    CarLicensePlate = carLicensePlate,
+                    CarLicensePlate = VerifyCarPlate(),
                 });
                 countCars++;
-            }
-            //carsList.ForEach(i => Console.WriteLine
-            //($"Brand: {i.Brand}\nModel: {i.Model}\nYear: {i.Year}" +
-            //$"\nValue: {i.Value}\nCar License Plate: {i.CarLicensePlate}\n\n"));
+            
             ShowAddedCar();
             AskToContinue();
         }
@@ -64,11 +56,19 @@ namespace CarRegistration
               $"\nValue: {i.Value}\nCar License Plate: {i.CarLicensePlate}\n\n"));
         }
 
-        public static bool VerifyCarPlate(string input)
+        public static string VerifyCarPlate()
         {
+            var comeBack = string.Empty;
+            Console.Write("Car License Plate: ");
+            string carLicensePlate = Console.ReadLine();
             //VerificationsRegex reg = new VerificationsRegex();
             //return reg.PlateCarVerify(input);
-            return VerificationsRegex.PlateCarVerify(input);
+            if (VerificationsRegex.PlateCarVerify(carLicensePlate))
+                comeBack = VerifyCarPlate();
+            else
+                comeBack = carLicensePlate;
+
+            return comeBack;
         }
 
         public static void ShowCars()
