@@ -11,7 +11,7 @@ namespace LibraryLocation.Model
         public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;//default: true(active)
         public int UserCreation { get; set; }
         public int UserChange { get; set; }
         public DateTime CreationDate { get; set; }

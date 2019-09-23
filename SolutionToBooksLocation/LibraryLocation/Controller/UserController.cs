@@ -13,9 +13,23 @@ namespace LibraryLocation.Controller
     /// </summary>
     public class UserController
     {
-        public List<User> UsersList { get; set; }
-
-
+        private int idCount = 1001;
+        private List<User> UsersList { get; set; }
+        /// <summary>
+        /// Method to add a new user at the systems
+        /// </summary>
+        /// <param name="userParam">New user to be added at the list</param>
+        public void AddUser(User userParam)
+        {
+            userParam.CreationDate = DateTime.Now;
+            userParam.Id = idCount++;
+            UsersList.Add(userParam);
+        }
+        public List<User> ReturnsUserList()
+        {
+            //returns just the activated users
+            return UsersList.Where(x => x.Active).ToList<User>();
+        }
         public UserController()
         {
             UsersList = new List<User>();
@@ -23,19 +37,18 @@ namespace LibraryLocation.Controller
             UsersList.Add(new User()
             {
                 Login = "admin",
-                Password = "admin"
+                Password = "admin",
+                Id = idCount++
 
             });
 
             UsersList.Add(new User()
             {
                 Login = "nuki",
-                Password = "123"
+                Password = "123",
+                Id = idCount++
             });
         }
-
-
-
         /// <summary>
         /// Method to login on the system
         /// To do the pattern login use:
@@ -46,17 +59,16 @@ namespace LibraryLocation.Controller
         /// <returns>Returns true when exists user with the specified login and password</returns>
         public bool SystemLogin(User users)
         {
-            return UsersList.Exists(x => x.Login == users.Login &&
+            return ReturnsUserList().Exists(x => x.Login == users.Login &&
             x.Password == users.Password);
-            //if (users.Login == "admin" && users.Password == "admin"
-            //    || users.Login == "nuki" && users.Password == "123")
-            //    return true;
-            //else
-
-            //    return false;
         }
-
+        /// <summary>
+        /// Method to disable the user register at our ist
+        /// </summary>
+        /// <param name="userIDNumber">parameter who identf. the user to be disabled</param>
+        public void DeleteUserByID(int userIDNumber)
+        {
+            UsersList.FirstOrDefault(x => x.Id == userIDNumber).Active = false;
+        }
     }
-
-
 }

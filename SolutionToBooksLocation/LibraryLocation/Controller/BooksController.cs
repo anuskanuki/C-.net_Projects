@@ -9,23 +9,30 @@ namespace LibraryLocation.Controller
 {
     public class BooksController
     {
-        public List<Book> Books { get; set; }
+        private int idCount = 1001;
+
+        private List<Book> BooksList { get; set; }
 
         public BooksController()
         {
-            Books = new List<Book>();
+            BooksList = new List<Book>();
+        }
+        public List<Book> ReturnsBookList()
+        {
+            return BooksList;
+        }
 
+        /// <summary>
+        /// This method add the book in our already created list, inside the constructor
+        /// </summary>
+        /// <param name="bookParam">Inserted book information</param>
+        public void AddBook(Book bookParam)
+        {
+            bookParam.CreationDate = DateTime.Now;
+            bookParam.Id = idCount++;
+            BooksList.Add(bookParam);
+        }
 
-            Books.Add(new Book()
-            {
-                Name = "My first book"
-            });
-
-            Books.Add(new Book()
-            {
-                Name = "My second book"
-            });
-        }  
 
 
     }
