@@ -10,7 +10,7 @@ namespace LibraryLocation.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
         public int UserCreation { get; set; }
         public int UserChange { get; set; }
         public DateTime CreationDate { get; set; }

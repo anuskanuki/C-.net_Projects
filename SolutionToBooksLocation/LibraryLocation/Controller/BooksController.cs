@@ -9,19 +9,15 @@ namespace LibraryLocation.Controller
 {
     public class BooksController
     {
-        private int idCount = 1001;
+        private LocationContext DataBaseContext = new LocationContext();
 
-        private List<Book> BooksList { get; set; }
-
-        public BooksController()
-        {
-            BooksList = new List<Book>();
-        }
         public List<Book> ReturnsBookList()
         {
-            return BooksList;
+            //where "active" is true,will return!
+            return DataBaseContext.BooksList.Where(x => x.Active).ToList<Book>();
         }
 
+        #region Add/Delete Book
         /// <summary>
         /// This method add the book in our already created list, inside the constructor
         /// </summary>
@@ -29,11 +25,20 @@ namespace LibraryLocation.Controller
         public void AddBook(Book bookParam)
         {
             bookParam.CreationDate = DateTime.Now;
-            bookParam.Id = idCount++;
-            BooksList.Add(bookParam);
+            bookParam.Id = DataBaseContext.IdCountBooks++;
+            DataBaseContext.BooksList.Add(bookParam);
         }
-
-
-
+        /// <summary>
+        /// Disable the sinalized book register
+        /// </summary>
+        /// <param name="bookId"></param>
+        public void DeleteBookByID(int bookId)
+        {
+            //first or default returns null in case he doesn't find the register
+            var bookHere = DataBaseContext.BooksList.FirstOrDefault(x => x.Id == bookId);
+            if (bookHere != null) //exception treatment
+                bookHere.Active = false;
+        }
+        #endregion
     }
 }

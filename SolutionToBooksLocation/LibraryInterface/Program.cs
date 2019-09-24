@@ -13,10 +13,13 @@ namespace LibraryInterface
     {
         static BooksController booksControllerObject = new BooksController();
         static UserController usersControllerObject = new UserController();
+
         static void Main(string[] args)
         {
             InitializingSys();
         }
+
+        #region SystemInteraction
         public static void InitializingSys()
         {
             Console.Clear();
@@ -29,32 +32,7 @@ namespace LibraryInterface
             ShowSystemMenu();
 
         }
-        public static void ShowUsers()
-        {
-            Console.Clear();
-            Console.WriteLine("\nUsers list: ");
-            usersControllerObject.ReturnsUserList().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
-            AskToContinue();
-        }
-        public static void AskToContinue()
-        {
-            Console.WriteLine("\n\nSystem Menu\n");
-            Console.WriteLine("1 - Show users");
-            Console.WriteLine("2 - Show books");
-            Console.WriteLine("3 - Register Book");
-            Console.WriteLine("0 - Log out\n");
-            var answer = int.Parse(Console.ReadLine());
-            UserChoice(answer);
-        }
-        public static void ShowBooks()
-        {
-            Console.Clear();
-            Console.WriteLine("\nBooks list: ");
 
-            booksControllerObject.ReturnsBookList().ForEach(i => Console.WriteLine($"\nID {i.Id}  Book name: {i.Name}"));
-
-            AskToContinue();
-        }
         /// <summary>
         /// Shows at the console the avaliable system menu
         /// </summary>
@@ -69,27 +47,23 @@ namespace LibraryInterface
             Console.WriteLine("4 - Register new user");
             Console.WriteLine("5 - User log off");
             Console.WriteLine("6 - Delete user");
+            Console.WriteLine("7 - Delete book");
             Console.WriteLine("0 - System log out\n");
             var answer = int.Parse(Console.ReadLine());
             UserChoice(answer);
         }
-        /// <summary>
-        /// Method to add a book in the books list, a new book registration
-        /// </summary>
-        private static void AddBook()
+
+        public static void AskToContinue()
         {
-            Console.Clear();
-            Console.WriteLine("\n---Register book in the system---\n\n");
-            Console.Write("Enter the book name: ");
-            var bookName = Console.ReadLine();
-            booksControllerObject.AddBook(new Book()
-            {
-                Name = bookName
-            });
-            Console.WriteLine("\n\nSuccessfully registered book!\n");
-            Thread.Sleep(1700);
-            ShowSystemMenu();
+            Console.WriteLine("\n\nSystem Menu\n");
+            Console.WriteLine("1 - Show users");
+            Console.WriteLine("2 - Show books");
+            Console.WriteLine("3 - Register Book");
+            Console.WriteLine("0 - Log out\n");
+            var answer = int.Parse(Console.ReadLine());
+            UserChoice(answer);
         }
+
         private static void UserChoice(int answer)
         {
             switch (answer)
@@ -128,8 +102,68 @@ namespace LibraryInterface
                     Console.Clear();
                     DeleteUser();
                     break;
+                case 7:
+                    Console.Clear();
+                    DeleteBook();
+                    break;
             }
         }
+
+        /// <summary>
+        /// This method do the complet proceedures from login inside the system, as
+        /// for ligin and password at the console, just like the respectives validations that
+        /// he needs to sign in
+        /// </summary>
+        /// <returns>Return true when the entered login and password are correct</returns>
+        private static bool DoTheSystemLogin()
+        {
+            Console.WriteLine("Enter your login and your password to acess:");
+
+            Console.Write("\nLogin:  ");
+            var userLogin = Console.ReadLine();
+
+            Console.Write("\nPassword:  ");
+            var userPassword = Console.ReadLine();
+
+            //click and press f9, is to start a breakpoint, so, 
+            //when we execute the project, will be started on the
+            //breakpoint, so we don't have to pass at f11 until the part that we want to
+
+            User user = new User();
+            user.Login = userLogin;
+            user.Password = userPassword;
+            return usersControllerObject.SystemLogin(user);
+            //or, do just:
+            //return userController.SystemLogin(new User()
+            //{
+            //    Login = userLogin,
+            //    Password = userPassword
+            //});
+        }
+
+        #endregion
+
+        #region ShowUsers/Books
+        public static void ShowBooks()
+        {
+            Console.Clear();
+            Console.WriteLine("\nBooks list: ");
+            booksControllerObject.ReturnsBookList().ForEach(i => Console.WriteLine($"\nID {i.Id}  Book name: {i.Name}"));
+            AskToContinue();
+        }
+
+        public static void ShowUsers()
+        {
+            Console.Clear();
+            Console.WriteLine("\nUsers list: ");
+            usersControllerObject.ReturnsUserList().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
+            AskToContinue();
+        }
+
+        #endregion
+
+        #region UserDelete/Add
+
         /// <summary>
         /// Method to delete the given user, by ID
         /// </summary>
@@ -170,36 +204,47 @@ namespace LibraryInterface
             Thread.Sleep(1700);
             ShowSystemMenu();
         }
+
+        #endregion
+
+        #region BookDelete/Add
+
         /// <summary>
-        /// This method do the complet proceedures from login inside the system, as
-        /// for ligin and password at the console, just like the respectives validations that
-        /// he needs to sign in
+        /// Method to delete the given book, by ID
         /// </summary>
-        /// <returns>Return true when the entered login and password are correct</returns>
-        private static bool DoTheSystemLogin()
+        private static void DeleteBook()
         {
-            Console.WriteLine("Enter your login and your password to acess:");
-
-            Console.Write("\nLogin:  ");
-            var userLogin = Console.ReadLine();
-
-            Console.Write("\nPassword:  ");
-            var userPassword = Console.ReadLine();
-
-            //click and press f9, is to start a breakpoint, so, 
-            //when we execute the project, will be started on the
-            //breakpoint, so we don't have to pass at f11 until the part that we want to
-
-            User user = new User();
-            user.Login = userLogin;
-            user.Password = userPassword;
-            return usersControllerObject.SystemLogin(user);
-            //or, do just:
-            //return userController.SystemLogin(new User()
-            //{
-            //    Login = userLogin,
-            //    Password = userPassword
-            //});
+            Console.WriteLine("DELETE BOOK BY ID");
+            Console.WriteLine("Choose the book to be deleted:");
+            //ShowBooks();
+            booksControllerObject.ReturnsBookList().ForEach(i => Console.WriteLine($"\nID{i.Id}  Book Name: {i.Name}"));
+            Console.WriteLine("\nEnter the selected ID:");
+            var idBookToRemove = int.Parse(Console.ReadLine());
+            booksControllerObject.DeleteBookByID(idBookToRemove);
+            Console.WriteLine("\n\nSuccessfully deleted book!\n");
+            Thread.Sleep(1700);
+            ShowSystemMenu();
         }
+
+        /// <summary>
+        /// Method to add a book in the books list, a new book registration
+        /// </summary>
+        private static void AddBook()
+        {
+            Console.Clear();
+            Console.WriteLine("\n---Register book in the system---\n\n");
+            Console.Write("Enter the book name: ");
+            var bookName = Console.ReadLine();
+            booksControllerObject.AddBook(new Book()
+            {
+                Name = bookName
+            });
+            Console.WriteLine("\n\nSuccessfully registered book!\n");
+            Thread.Sleep(1700);
+            ShowSystemMenu();
+        }
+
+        #endregion
+
     }
 }

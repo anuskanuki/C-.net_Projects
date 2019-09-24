@@ -44,6 +44,7 @@
     <Compile Include="Controller\BooksController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Book.cs" />
+    <Compile Include="Model\LocationContext.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
