@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace SortingPeople
+namespace SortingPeople2.Model
 {
     public class People
     {
@@ -12,13 +11,5 @@ namespace SortingPeople
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public double Wallet { get; set; }
-        public People(int id, string name, DateTime birthDate, double wallet)
-        {
-            Id = id;
-            Name = name;
-            BirthDate = birthDate;
-            Wallet = wallet;
-        }
-
     }
 }
