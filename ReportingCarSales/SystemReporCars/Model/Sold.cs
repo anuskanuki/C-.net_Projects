@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarSaleReports.Model
+namespace SystemReporCars.Model
 {
-    public class Car
+    public class Sold
     {
         public int IdCar { get; set; }
-        public int AmountCar { get; set; }
         public string CarName { get; set; }
-        public double CarPrice { get; set; }
-        public DateTime DateCar { get; set; }
+        public double PriceCar { get; set; }
+        public int AmountCars { get; set; }
+        public DateTime Date { get; set; }
 
     }
 }

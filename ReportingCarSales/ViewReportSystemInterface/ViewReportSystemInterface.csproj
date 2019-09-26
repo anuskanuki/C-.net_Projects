@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0FC62F34-A3A3-46A2-8FDB-9B98BE294DEF}</ProjectGuid>
+    <ProjectGuid>{2259239A-C83E-4BE0-8A1F-B1FBAC82AEBF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SistemaDeRelatorios</RootNamespace>
-    <AssemblyName>SistemaDeRelatorios</AssemblyName>
+    <RootNamespace>ViewReportSystemInterface</RootNamespace>
+    <AssemblyName>ViewReportSystemInterface</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RelatoriosVendasCArros\CarSaleReports.csproj">
-      <Project>{7e9767dd-cde1-4ff3-bc82-c20e1dede1cb}</Project>
-      <Name>CarSaleReports</Name>
+    <ProjectReference Include="..\SystemReporCars\SystemReporCars.csproj">
+      <Project>{9b6575c6-6775-406f-9f4a-6e01f6e9ca1a}</Project>
+      <Name>SystemReporCars</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,6 +11,15 @@ namespace CarSaleReports.Controller
     {
         private LocationContext DataBaseContext = new LocationContext();
 
+        public List<Car> ReturnsCarsList()
+        {
+            return DataBaseContext.CarsList;
+        }
+
+        public void ShowInfo()
+        {
+            ReturnsCarsList().ToString();
+        }
 
     }
 }
