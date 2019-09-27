@@ -81,7 +81,14 @@ namespace ConsoleAppDllTeste
             Console.WriteLine("\n----------- DELETAR PASTA ----------\n\n");
             Console.Write("Informe o nome da pasta a ser deletada: ");
             string nomePasta = Console.ReadLine();
-            docsObject.DeletarPastaMeusDocumentos(nomePasta);
+            Console.WriteLine("\n\nDeseja apagar as subpastas?\n(1) Sim (2) Não\n");
+            var subPastas = int.Parse(Console.ReadLine());
+            var subBool = true;
+            if (subPastas == 1)
+                subBool = true;
+            else
+                subBool = false;
+            docsObject.DeletarPastaMeusDocumentos(nomePasta, subBool);
             Console.Clear();
             Console.WriteLine("\nPasta deletada com sucesso!\n");
             ContinuarFluxo();
