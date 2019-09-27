@@ -12,7 +12,7 @@ namespace ListarCarrosDoAmigo
         static CarroController controller = new CarroController();
         static void Main(string[] args)
         {
-            controller.GetCarros().ForEach(i => Console.WriteLine($"{i.Id}{i.Marca}{i.Modelo}"));
+            controller.GetCarros().ForEach(i => Console.WriteLine($"{i.Id}{i.Marca}{i.Modelo}{i.Portas}"));
             Console.ReadLine();
         }
     }

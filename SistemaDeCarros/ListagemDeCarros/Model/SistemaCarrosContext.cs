@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ListagemDeCarros.Model
 {
-    class SistemaCarrosContext
+    public class SistemaCarrosContext
     {
         private List<Carro> ListaCarros { get; set; }
 

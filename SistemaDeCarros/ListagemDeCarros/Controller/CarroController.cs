@@ -7,7 +7,7 @@ using ListagemDeCarros.Model;
 
 namespace ListagemDeCarros.Controller
 {
-    class CarroController
+    public class CarroController
     {
         SistemaCarrosContext sistemaCarrosContextObjeto = new SistemaCarrosContext();
         /// <summary>
