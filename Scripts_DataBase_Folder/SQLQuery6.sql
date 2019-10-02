@@ -47,10 +47,13 @@ c on p.ClienteId=c.Id
 --where c.id = 5
 group by p.ClienteId, C.Nome
 
-
-
-
-
-
+-------------------BRINDE
+select IIF(SUM( ped.valor) > 2000, 'Brinde', 'Sem Brinde')
+as 'Resultado',
+SUM(ped.Valor) as 'Total',
+cli.Nome
+from Pedidos ped inner join 
+Clientes cli on
+ped.ClienteId = cli.Id group by cli.Nome
 
 
