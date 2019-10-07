@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityClass", "EntityClass\EntityClass.csproj", "{3D0FC5D5-9116-441C-BE21-40E4C73E044D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaEscola", "SistemaEscola\SistemaEscola.csproj", "{E5AE6881-5F64-43E5-9939-7EA133052069}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D0FC5D5-9116-441C-BE21-40E4C73E044D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D0FC5D5-9116-441C-BE21-40E4C73E044D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D0FC5D5-9116-441C-BE21-40E4C73E044D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D0FC5D5-9116-441C-BE21-40E4C73E044D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5AE6881-5F64-43E5-9939-7EA133052069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5AE6881-5F64-43E5-9939-7EA133052069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5AE6881-5F64-43E5-9939-7EA133052069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5AE6881-5F64-43E5-9939-7EA133052069}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FBA99E5-CF1F-4734-BCEE-7A1359D0ED38}
+	EndGlobalSection
+EndGlobal
