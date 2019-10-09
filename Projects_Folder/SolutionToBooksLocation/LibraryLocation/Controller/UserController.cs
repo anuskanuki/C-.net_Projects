@@ -12,8 +12,8 @@ namespace LibraryLocation.Controller
     /// </summary>
     public class UserController
     {
+        BooksContextDB contextDB = new BooksContextDB();
 
-        private LocationContext DataBaseContext = new LocationContext();
 
         /// <summary>
         /// Method to login on the system
@@ -25,39 +25,77 @@ namespace LibraryLocation.Controller
         /// <returns>Returns true when exists user with the specified login and password</returns>
         public bool SystemLogin(User users)
         {
-            return ReturnsUserList().Exists(x => x.Login == users.Login &&
-            x.Password == users.Password);
+            return GetUsers().ToList<User>().Exists(x => x.Login == users.Login &&
+             x.Password == users.Password);
         }
 
-        public List<User> ReturnsUserList()
+        #region CRUD
+        //CRUD
+        //CREATE
+        public bool AddUser(User itemUser)
         {
-            //returns just the activated users
-            return DataBaseContext.UsersList.Where(x => x.Active).ToList<User>();
+            //validations
+            if (string.IsNullOrWhiteSpace(itemUser.Login))
+                return false;
+
+            contextDB.Users.Add(itemUser);//insert into users list
+            contextDB.SaveChanges();
+            return true;
+
+            //BEFORE THE DATA BASE, USED TO DO:
+            //itemUser.CreationDate = DateTime.Now;
+            //itemUser.Id = DataBaseContext.IdCountUsers++;
+            //DataBaseContext.UsersList.Add(itemUser);
         }
 
-        #region Add/Delete User
-        /// <summary>
-        /// Method to add a new user at the systems
-        /// </summary>
-        /// <param name="userParam">New user to be added at the list</param>
-        public void AddUser(User userParam)
+        //READ
+        public IQueryable<User> GetUsers()
         {
-            userParam.CreationDate = DateTime.Now;
-            userParam.Id = DataBaseContext.IdCountUsers++;
-            DataBaseContext.UsersList.Add(userParam);
+            return contextDB.Users.Where(x => x.Active == true);//bring just the actives users
+            //BEFORE WE USED TO DO:
+            ////returns just the activated users
+            //return DataBaseContext.UsersList.Where(x => x.Active).ToList<User>();
         }
-        /// <summary>
-        /// Method to disable the user register at our ist
-        /// </summary>
-        /// <param name="userIDNumber">parameter who identf. the user to be disabled</param>
-        public void DeleteUserByID(int userIDNumber)
+
+        //UPDATE
+        public bool UpdateUser(User itemUser)//item is the updated user
         {
-            //first or default returns null in case he doesn't find the register
-            var userHere = DataBaseContext.UsersList.FirstOrDefault(x => x.Id == userIDNumber);
-            if (userHere != null) //exception treatment
-                userHere.Active = false;
-            //instead of just:
-            //UsersList.FirstOrDefault(x => x.Id == userIDNumber).Active = false;
+            var user = contextDB.Users.FirstOrDefault(x => x.Id == itemUser.Id);
+
+            if (user == null)//verify if he found a user
+                return false;//if negaive, return false
+            else
+            {
+                user.ChangeDate = DateTime.Now;//we update the alteration 
+                //date from our user, since we just updated, register this alteration
+            }
+            contextDB.SaveChanges();//save the canges at the Data Base
+
+            return true;//we return that have been updated
+            //(Before we didn't have an update method)
+        }
+
+        //DELETE
+        public bool DeleteUser(int userId)
+        {
+
+            var userRemoved = contextDB.Users.FirstOrDefault(x => x.Id == userId);
+
+            //validations
+            if (userRemoved == null)
+                return false;
+            userRemoved.Active = false;
+
+            contextDB.SaveChanges();
+            return true;//true as "removing user sucessfully"
+
+            //BEFORE WE USED TO DO:
+            ////first or default returns null in case he doesn't find the register
+            //var userHere = DataBaseContext.UsersList.FirstOrDefault(x => x.Id == userId);
+            //if (userHere != null) //exception treatment
+            //    userHere.Active = false;
+            ////instead of just:
+            ////UsersList.FirstOrDefault(x => x.Id == userIDNumber).Active = false;
         }
         #endregion
 

@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryLocation.Model
 {
-    public class Book
+    public class Book : UserControll
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
+        [MaxLength(60)]
         public string Name { get; set; }
-        public bool Active { get; set; } = true;
-        public int UserCreation { get; set; }
-        public int UserChange { get; set; }
-        public DateTime CreationDate { get; set; }
-        public DateTime ChangeDate { get; set; }
-
     }
 }

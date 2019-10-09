@@ -148,7 +148,7 @@ namespace LibraryInterface
         {
             Console.Clear();
             Console.WriteLine("\nBooks list: ");
-            booksControllerObject.ReturnsBookList().ForEach(i => Console.WriteLine($"\nID {i.Id}  Book name: {i.Name}"));
+            booksControllerObject.GetBooks().ForEach(i => Console.WriteLine($"\nID {i.Id}  Book name: {i.Name}"));
             AskToContinue();
         }
 
@@ -156,7 +156,7 @@ namespace LibraryInterface
         {
             Console.Clear();
             Console.WriteLine("\nUsers list: ");
-            usersControllerObject.ReturnsUserList().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
+            usersControllerObject.GetUsers().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
             AskToContinue();
         }
 
@@ -172,10 +172,10 @@ namespace LibraryInterface
             Console.WriteLine("DELETE USER BY ID");
             Console.WriteLine("Choose the user to be deleted:");
             //ShowUsers();
-            usersControllerObject.ReturnsUserList().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
+            usersControllerObject.GetUsers().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
             Console.WriteLine("Enter the selected ID:");
             var idUserDelete = int.Parse(Console.ReadLine());
-            usersControllerObject.DeleteUserByID(idUserDelete);
+            usersControllerObject.DeleteUser(idUserDelete);
             Console.WriteLine("\n\nSuccessfully deleted user!\n");
             Thread.Sleep(1700);
             ShowSystemMenu();
@@ -217,10 +217,10 @@ namespace LibraryInterface
             Console.WriteLine("DELETE BOOK BY ID");
             Console.WriteLine("Choose the book to be deleted:");
             //ShowBooks();
-            booksControllerObject.ReturnsBookList().ForEach(i => Console.WriteLine($"\nID{i.Id}  Book Name: {i.Name}"));
+            booksControllerObject.GetBooks().ForEach(i => Console.WriteLine($"\nID{i.Id}  Book Name: {i.Name}"));
             Console.WriteLine("\nEnter the selected ID:");
             var idBookToRemove = int.Parse(Console.ReadLine());
-            booksControllerObject.DeleteBookByID(idBookToRemove);
+            booksControllerObject.RemoveBook(idBookToRemove);
             Console.WriteLine("\n\nSuccessfully deleted book!\n");
             Thread.Sleep(1700);
             ShowSystemMenu();

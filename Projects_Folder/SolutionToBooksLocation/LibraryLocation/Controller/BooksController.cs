@@ -9,35 +9,62 @@ namespace LibraryLocation.Controller
 {
     public class BooksController
     {
-        private LocationContext DataBaseContext = new LocationContext();
 
-        public List<Book> ReturnsBookList()
+        BooksContextDB contextDB = new BooksContextDB();
+
+        #region CRUD
+        //CRUD
+        //CREATE
+        public bool AddBook(Book itemBook)
         {
-            //where "active" is true,will return!
-            return DataBaseContext.BooksList.Where(x => x.Active).ToList<Book>();
+            //validations
+            if (string.IsNullOrWhiteSpace(itemBook.Name))
+                return false;
+
+            contextDB.Books.Add(itemBook);//insert into books list
+            contextDB.SaveChanges();
+            return true;
         }
 
-        #region Add/Delete Book
-        /// <summary>
-        /// This method add the book in our already created list, inside the constructor
-        /// </summary>
-        /// <param name="bookParam">Inserted book information</param>
-        public void AddBook(Book bookParam)
+        //READ
+        public IQueryable<Book> GetBooks()
         {
-            bookParam.CreationDate = DateTime.Now;
-            bookParam.Id = DataBaseContext.IdCountBooks++;
-            DataBaseContext.BooksList.Add(bookParam);
+            return contextDB.Books.Where(x => x.Active == true);//bring just the actives books
         }
-        /// <summary>
-        /// Disable the sinalized book register
-        /// </summary>
-        /// <param name="bookId"></param>
-        public void DeleteBookByID(int bookId)
+
+        //UPDATE
+        public bool UpdateCellPhone(Book item)//item is the updated book
         {
-            //first or default returns null in case he doesn't find the register
-            var bookHere = DataBaseContext.BooksList.FirstOrDefault(x => x.Id == bookId);
-            if (bookHere != null) //exception treatment
-                bookHere.Active = false;
+            var book =//variable to the book
+                contextDB.//using the data base
+                Books.//our table who have the books
+                FirstOrDefault(x => x.Id == item.Id);//where th old id is like the new id,
+            //so, just changing the info, from this book(the informated id)
+
+            if (book == null)//verify if he found a book
+                return false;//if negaive, return false
+            else
+            {
+                book.ChangeDate = DateTime.Now;//we update the alteration 
+                //date from our book, since we just updated, register this alteration
+            }
+            contextDB.SaveChanges();//save the canges at the Data Base
+
+            return true;//we return that have been updated
+        }
+
+        //DELETE
+        public bool RemoveBook(int bookId)
+        {
+            var bookRemoved = contextDB.Books.FirstOrDefault(x => x.Id == bookId);
+
+            //validations
+            if (bookRemoved == null)
+                return false;
+            bookRemoved.Active = false;
+
+            contextDB.SaveChanges();
+            return true;//true as "removing book sucessfully"
         }
         #endregion
     }
