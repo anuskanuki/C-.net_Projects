@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListNames", "ListNames\ListNames.csproj", "{815E72DA-B376-45F8-A570-E5CBB0397783}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintingNamesView", "PrintingNamesView\PrintingNamesView.csproj", "{08C45D58-A9D9-4EE3-A700-254C2FC8B063}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{815E72DA-B376-45F8-A570-E5CBB0397783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815E72DA-B376-45F8-A570-E5CBB0397783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815E72DA-B376-45F8-A570-E5CBB0397783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815E72DA-B376-45F8-A570-E5CBB0397783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08C45D58-A9D9-4EE3-A700-254C2FC8B063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C45D58-A9D9-4EE3-A700-254C2FC8B063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C45D58-A9D9-4EE3-A700-254C2FC8B063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C45D58-A9D9-4EE3-A700-254C2FC8B063}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D675E02-9263-49AA-A224-5F3633B94188}
+	EndGlobalSection
+EndGlobal
