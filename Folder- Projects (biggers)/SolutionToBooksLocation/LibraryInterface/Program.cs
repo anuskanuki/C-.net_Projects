@@ -49,6 +49,7 @@ namespace LibraryInterface
             Console.WriteLine("6 - Delete user");
             Console.WriteLine("7 - Delete book");
             Console.WriteLine("0 - System log out\n");
+            Console.WriteLine("\nType the choosed action");
             var answer = int.Parse(Console.ReadLine());
             UserChoice(answer);
         }
