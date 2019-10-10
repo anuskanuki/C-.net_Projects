@@ -55,13 +55,9 @@ namespace LibraryInterface
 
         public static void AskToContinue()
         {
-            Console.WriteLine("\n\nSystem Menu\n");
-            Console.WriteLine("1 - Show users");
-            Console.WriteLine("2 - Show books");
-            Console.WriteLine("3 - Register Book");
-            Console.WriteLine("0 - Log out\n");
-            var answer = int.Parse(Console.ReadLine());
-            UserChoice(answer);
+            Console.WriteLine("\n\n--- Press ENTER to show the menu ---");
+            Console.ReadKey();
+            ShowSystemMenu();
         }
 
         private static void UserChoice(int answer)
@@ -147,16 +143,16 @@ namespace LibraryInterface
         public static void ShowBooks()
         {
             Console.Clear();
-            Console.WriteLine("\nBooks list: ");
-            booksControllerObject.GetBooks().ForEach(i => Console.WriteLine($"\nID {i.Id}  Book name: {i.Name}"));
+            Console.WriteLine("Books list: \n");
+            booksControllerObject.GetBooks().ToList().ForEach(i => Console.WriteLine($"\nID {i.Id}  Book name: {i.Name}"));
             AskToContinue();
         }
 
         public static void ShowUsers()
         {
             Console.Clear();
-            Console.WriteLine("\nUsers list: ");
-            usersControllerObject.GetUsers().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
+            Console.WriteLine("Users list: \n");
+            usersControllerObject.GetUsers().ToList().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
             AskToContinue();
         }
 
@@ -172,7 +168,7 @@ namespace LibraryInterface
             Console.WriteLine("DELETE USER BY ID");
             Console.WriteLine("Choose the user to be deleted:");
             //ShowUsers();
-            usersControllerObject.GetUsers().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
+            usersControllerObject.GetUsers().ToList().ForEach(i => Console.WriteLine($"\nID{i.Id}  User login: {i.Login}"));
             Console.WriteLine("Enter the selected ID:");
             var idUserDelete = int.Parse(Console.ReadLine());
             usersControllerObject.DeleteUser(idUserDelete);
@@ -217,7 +213,7 @@ namespace LibraryInterface
             Console.WriteLine("DELETE BOOK BY ID");
             Console.WriteLine("Choose the book to be deleted:");
             //ShowBooks();
-            booksControllerObject.GetBooks().ForEach(i => Console.WriteLine($"\nID{i.Id}  Book Name: {i.Name}"));
+            booksControllerObject.GetBooks().ToList().ForEach(i => Console.WriteLine($"\nID{i.Id}  Book Name: {i.Name}"));
             Console.WriteLine("\nEnter the selected ID:");
             var idBookToRemove = int.Parse(Console.ReadLine());
             booksControllerObject.RemoveBook(idBookToRemove);

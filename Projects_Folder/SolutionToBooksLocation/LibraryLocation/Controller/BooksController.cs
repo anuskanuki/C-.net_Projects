@@ -10,7 +10,7 @@ namespace LibraryLocation.Controller
     public class BooksController
     {
 
-        BooksContextDB contextDB = new BooksContextDB();
+        SystemContextDB contextDB = new SystemContextDB();
 
         #region CRUD
         //CRUD

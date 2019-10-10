@@ -12,8 +12,21 @@ namespace LibraryLocation.Controller
     /// </summary>
     public class UserController
     {
-        BooksContextDB contextDB = new BooksContextDB();
+        SystemContextDB contextDB = new SystemContextDB();
 
+        public UserController()
+        {
+            var defaultUser = contextDB.Users.FirstOrDefault(x =>
+            x.Login == "admin" && x.Password == "admin");
+
+            if (defaultUser == null)
+                contextDB.Users.Add(new User()
+                {
+                    Login = "admin",
+                    Password = "admin"
+                });
+            contextDB.SaveChanges();
+        }
 
         /// <summary>
         /// Method to login on the system
@@ -25,13 +38,19 @@ namespace LibraryLocation.Controller
         /// <returns>Returns true when exists user with the specified login and password</returns>
         public bool SystemLogin(User users)
         {
-            return GetUsers().ToList<User>().Exists(x => x.Login == users.Login &&
+            bool teste = GetUsers().ToList().Exists(x => x.Login == users.Login &&
              x.Password == users.Password);
+            return teste;
         }
 
         #region CRUD
         //CRUD
         //CREATE
+        /// <summary>
+        /// This method validates and insert registers at the system
+        /// </summary>
+        /// <param name="itemUser">the new user</param>
+        /// <returns>Returns true to a valid user</returns>
         public bool AddUser(User itemUser)
         {
             //validations
@@ -49,6 +68,10 @@ namespace LibraryLocation.Controller
         }
 
         //READ
+        /// <summary>
+        /// This methos red the actives users list 
+        /// </summary>
+        /// <returns>Returns the filtered users by actives users</returns>
         public IQueryable<User> GetUsers()
         {
             return contextDB.Users.Where(x => x.Active == true);//bring just the actives users
@@ -58,6 +81,11 @@ namespace LibraryLocation.Controller
         }
 
         //UPDATE
+        /// <summary>
+        /// This method updates a valid user register from the system
+        /// </summary>
+        /// <param name="itemUser">The user to be updated</param>
+        /// <returns>Returns true if the item exists</returns>
         public bool UpdateUser(User itemUser)//item is the updated user
         {
             var user = contextDB.Users.FirstOrDefault(x => x.Id == itemUser.Id);
@@ -76,6 +104,11 @@ namespace LibraryLocation.Controller
         }
 
         //DELETE
+        /// <summary>
+        /// This method is to just disable an user from the system
+        /// </summary>
+        /// <param name="userId">Informed ID wanted to disable</param>
+        /// <returns>Return true in sucess case</returns>
         public bool DeleteUser(int userId)
         {
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryLocation.Model
 {
-    class BooksContextDB : DbContext
+    public class SystemContextDB : DbContext
     {
         public DbSet<User> Users { set; get; }
         public DbSet<Book> Books { get; set; }
