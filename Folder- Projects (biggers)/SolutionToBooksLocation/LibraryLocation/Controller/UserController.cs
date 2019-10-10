@@ -54,12 +54,16 @@ namespace LibraryLocation.Controller
         public bool AddUser(User itemUser)
         {
             //validations
-            if (string.IsNullOrWhiteSpace(itemUser.Login))
-                return false;
+            if (string.IsNullOrWhiteSpace(itemUser.Login))//if it doesn't have something (null)
+                return false;//"Couldn't add the user"
 
-            contextDB.Users.Add(itemUser);//insert into users list
-            contextDB.SaveChanges();
-            return true;
+            contextDB.Users.Add(itemUser);//insert into users list:
+            //"contextDB" is th instance from our "SystemContextDB", who own just the tables created in DataBase
+            //".Users", because, we're saying that, on the "contextDB", our dataBase,
+            //we have a table named "Users", and:
+            //".Add" add at the Users table the param item "itemUser", witch is a variable, could have different names
+            contextDB.SaveChanges();//As we're messing with the DataBase, always save the changes
+            return true;//"User added"
 
             //BEFORE THE DATA BASE, USED TO DO:
             //itemUser.CreationDate = DateTime.Now;
