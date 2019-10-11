@@ -23,7 +23,7 @@ namespace FlowerShop.Controller
 
         public IQueryable<Flower> GetFlowers()
         {
-            return contextDB.Flowers.Where(x => x.Active == true);
+            return contextDB.Flowers.Where(p => p.Active);
         }
 
     }
